@@ -18,6 +18,9 @@ function App() {
           <LandingOne/>
          {/* // <Journalview/> */}
         </Route>
+        <Route exact path= '/journal'>
+          <Journalview/> 
+        </Route>
         <Route exact path ='/landing'>
           <Landing/>
         </Route>

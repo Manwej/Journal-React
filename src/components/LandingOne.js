@@ -1,58 +1,43 @@
 import React from 'react';
-import AppBar from '@material-ui/core/AppBar';
-import Button from '@material-ui/core/Button';
-
-import MenuBookIcon from '@material-ui/icons/MenuBook';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Grid from '@material-ui/core/Grid';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
-import Link from '@material-ui/core/Link';
-import Card from '@material-ui/core/Card';
 import img from '../static/arash_asghari-min.jpg'
+import img2 from '../static/noah_buschner-min.jpg'
+import img3 from '../static/taylor_simpson-min.jpg'
+
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Button from 'react-bootstrap/Button';
+
+
+
 
 import '../styles/LandingOne.css'
 
-import { CardMedia } from '@material-ui/core';
-
-const useStyles = makeStyles((theme) => ({
-  icon: {
-    marginRight: theme.spacing(2),
-  },
-  heroContent: {
-    //backgroundColor: theme.palette.background.paper,
-    padding: theme.spacing(8, 0, 6)
-  },
-  heroButtons: {
-    marginTop: theme.spacing(4),
-  }
-}));
-
-export default function Album() {
-  const classes = useStyles();
-
+export default function LandingOne() {
   return (
-    <React.Fragment>
-      <CssBaseline />
-      <main className="full" >
-      <Grid container spacing={3} >
-      <Grid item xs={6}>
-         
-      </Grid>
-      <Grid item xs={6}>
-      <Card className="grid"  >
-            <CardMedia
-            src={img}
-            component="img"
-            alt="WTF"
-            height="90%"/>
-          </Card>
-      </Grid>
-      </Grid>
-       
-      </main>
-    </React.Fragment>
+    <Container fluid className="full">
+    
+      <div className="mosaic">
+        <div className="headline">
+          <p>Welcome to</p>
+          <h1>Your Journal</h1>
+          <a href="/journal">
+            <Button variant="outline-light" className="bttn">
+              View your journal
+            </Button>
+          </a>
+        </div>
+        <div className="coverpicture">
+          <img src={img} alt="cover" className="pic1"/>
+        </div>
+        <div className="leftpicture">
+        <img src={img2} alt="cover" className="pic2"/>
+        </div>
+        <div className="rightpicture">
+          <img src={img3} alt="cover" className="pic3"/>
+        </div>
+
+      </div>
+    
+  </Container>
   );
 }
