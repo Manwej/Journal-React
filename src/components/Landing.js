@@ -31,36 +31,12 @@ import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
 import '../styles/Landing.css'
 
-const useStyles = makeStyles((theme) => ({
-  icon: {
-    marginRight: theme.spacing(2),
-  },
-  heroContent: {
-    backgroundColor: theme.palette.background.paper,
-    padding: theme.spacing(8, 0, 6),
-  },
-  heroButtons: {
-    marginTop: theme.spacing(4),
-  }
-}));
-
 export default function Album() {
-  const classes = useStyles();
+  
 
   return (
     <React.Fragment>
-      <CssBaseline />
-      <AppBar position="relative">
-        <Toolbar>
-          <MenuBookIcon className={classes.icon} />
-          <Typography variant="h6" color="inherit" noWrap>
-            Your Journal
-          </Typography>
-        </Toolbar>
-      </AppBar>
-      <main>
-        {/* Hero unit */}
-        <div className={classes.heroContent}>
+     
           <Container maxWidth="sm">
             <div id="landing-header">
  		        <h1>Welcome to Your Journal!</h1>
@@ -69,7 +45,7 @@ export default function Album() {
                     View Your Journal
                 </Button>
                 </Link>
-    </div>
+            </div>
             <ul className="slideshow">
                  <li></li>
                  <li></li>
@@ -78,8 +54,7 @@ export default function Album() {
                  <li></li>
             </ul>
           </Container>
-        </div>
-      </main>
+      
     </React.Fragment>
   );
 }

@@ -6,11 +6,8 @@ import img3 from '../static/taylor_simpson-min.jpg'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
-
-
-
-
 import '../styles/LandingOne.css'
+
 
 export default function LandingOne() {
   return (
@@ -22,7 +19,7 @@ export default function LandingOne() {
           <h1>Your Journal</h1>
           <a href="/journal">
             <Button variant="outline-light" className="bttn">
-              View your journal
+              Create your journal
             </Button>
           </a>
         </div>

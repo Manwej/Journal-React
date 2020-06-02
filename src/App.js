@@ -1,31 +1,31 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Login from './components/Login';
-import Landing from './components/Landing';
+import Journalsedit from './components/Journalsedit';
 import LandingOne from './components/LandingOne';
+import Landing from './components/Landing';
 
-import Footer from './components/Footer'
+import Journals from './components/Journals'
 import Register from './components/Register'
 import Journalview from './components/Journalview';
 
 
 function App() {
   return(
-
     <Router>
       <Switch>
         <Route exact path= '/'>
-          <LandingOne/>
+          <Landing/>
          {/* // <Journalview/> */}
         </Route>
         <Route exact path= '/journal'>
           <Journalview/> 
         </Route>
-        <Route exact path ='/landing'>
-          <Landing/>
+        <Route exact path ='/journals'>
+          <Journals/>
         </Route>
-        <Route exact path= '/journal'>
-
+        <Route exact path ='/journals/:id'>
+          <Journalsedit/>
         </Route>
         <Route exact path ='/login'>
           <Login/>
