@@ -10,7 +10,6 @@ import Card from 'react-bootstrap/Card';
 
 export default function Journalview() {
    
-   
         return (
            <Fragment>
                <Navbar bg="light" expand="lg">
