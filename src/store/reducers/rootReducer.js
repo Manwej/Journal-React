@@ -1,10 +1,15 @@
-const initState ={
-posts:[]
-}
+import authReducer from './authReducer'
+import projectReducer from './projectReducer'
+
+import {combinedReducers} from 'redux'
 
 
-const rootReducer =(state = initState, action)=>{
-return state;
-}
+const rootReducer =combinedReducers(
+    {
+        auth: authReducer,
+        project: projectReducer
+    }
+)
+
 
 export default rootReducer
