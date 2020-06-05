@@ -7,9 +7,10 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Card from 'react-bootstrap/Card';
+import {connect} from 'react-redux'
 
-export default function Journalview() {
-   
+function Journals(props) {
+   console.log(props)
         return (
            <Fragment>
                <Navbar bg="light" expand="lg">
@@ -98,3 +99,9 @@ export default function Journalview() {
         )
     
 }
+const mapStateToProps=(state)=>{
+  return{
+    projects: state.project.projects
+  }
+}
+export default connect(mapStateToProps)(Journals)

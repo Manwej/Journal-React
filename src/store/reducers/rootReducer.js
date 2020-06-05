@@ -1,15 +1,12 @@
 import authReducer from './authReducer'
 import projectReducer from './projectReducer'
+import {combineReducers} from 'redux'
 
-import {combinedReducers} from 'redux'
 
-
-const rootReducer =combinedReducers(
-    {
+const rootReducer =combineReducers({
         auth: authReducer,
         project: projectReducer
-    }
-)
+    });
 
 
 export default rootReducer
