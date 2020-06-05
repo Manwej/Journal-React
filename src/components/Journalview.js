@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component, Fragment, useState } from 'react'
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import Row from 'react-bootstrap/Row';
@@ -6,15 +6,24 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
+import {connect} from 'react-redux'
+import {createProject} from '../store/actions/projectActions'
 
 
 
 
 
 
+function Journalview(props) {
+   const [state, setState] = useState("")
 
-export default function Journalview() {
-   
+    const handleChange=(e)=>{
+      setState(e.target.value)
+   }
+    const handleSubmit=(e)=>{
+    e.preventDefault()
+    props.createProject(state)
+    }
    
         return (
            <Fragment>
@@ -35,7 +44,7 @@ export default function Journalview() {
                   <h2> Write down your daily answers.</h2>
                       <Form.Group controlId="question1">
                         <Form.Label>How are you feeling today?</Form.Label>
-                        <Form.Control as="select">
+                        <Form.Control as="select" onChange={handleChange}>
                           <option>1-very good</option>
                           <option>2-good</option>
                           <option>3-average</option>
@@ -50,7 +59,7 @@ export default function Journalview() {
                       <Form.Group controlId="question3">
                       <Form.Label>What are you gratefull for today?</Form.Label>
                     
-                        <Form.Control as="textarea" rows="3" placeholder="answer"/>
+                        <Form.Control as="textarea" rows="3" placeholder="answer" onChange={handleChange}/>
                       </Form.Group>
                       <Form.Group controlId="question4">
                       <Form.Label>What is your daily affirmation?</Form.Label>
@@ -68,7 +77,7 @@ export default function Journalview() {
                         <Form.Control as="textarea" rows="3" placeholder="answer"/>
                       </Form.Group>
                       
-                      <Button variant="primary" type="submit">
+                      <Button variant="primary" type="submit" onClick={handleSubmit}>
                         Submit
                       </Button>
                 </Form>
@@ -79,3 +88,10 @@ export default function Journalview() {
         )
     
 }
+const mapDispatchToProps=(dispatch)=>{
+  return{
+    createProject: (project)=>dispatch(createProject(project))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(Journalview)// null ist first param which is the state(mapstatetoProps)

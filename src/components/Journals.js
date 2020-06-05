@@ -9,6 +9,7 @@ import Container from 'react-bootstrap/Container';
 import Card from 'react-bootstrap/Card';
 import {connect} from 'react-redux'
 
+
 function Journals(props) {
    console.log(props)
         return (
