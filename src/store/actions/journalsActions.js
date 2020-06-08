@@ -1,4 +1,4 @@
-export const fetchJournal=(project)=>{
+export const fetchJournal=()=>{
     return (dispatch) => {
         fetch("http://localhost:5000/journalpage", {
             mode: 'cors',
@@ -17,11 +17,9 @@ export const fetchJournal=(project)=>{
             dispatch({ type: "FETCH_JOURNAL_ERROR", payload: err });
           });
       };
-    
-    
-    
-    // (dispatch, getState)=>{
-    //     //make async call to database
-    //     dispatch({type:'FETCH_JOURNAL', project})
-    // }
 }
+// export const createJournal=(project)=>{
+//     return (dispatch)=>{
+
+//     }
+// }

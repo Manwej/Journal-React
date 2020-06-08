@@ -1,20 +1,14 @@
 import React, { Component, Fragment, useState, useEffect } from 'react'
-import Navbar from 'react-bootstrap/Navbar';
-import Nav from 'react-bootstrap/Nav';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
+import Navigation from './Navigation'
 import {connect} from 'react-redux'
 import {fetchJournal} from '../store/actions/journalsActions'
 
-
-
-
-
-
-function Journalview(props) {
+function Createpage(props) {
    const [state, setState] = useState("")
 
     const handleChange=(e)=>{
@@ -24,26 +18,14 @@ function Journalview(props) {
     e.preventDefault()
     props.fetchJournal()
     }
-    console.log("hellofrom journalviews")
     console.log(props)
-
     useEffect(() => {
-      console.log("hello")
       props.fetchJournal()
     }, [])
    
         return (
            <Fragment>
-               <Navbar bg="light" expand="lg">
-                <Navbar.Brand href="#home">Your Journal</Navbar.Brand>
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                <Navbar.Collapse id="basic-navbar-nav">
-                  <Nav className="mr-auto">
-                    <Nav.Link href="/journal">Write new Page</Nav.Link>
-                    <Nav.Link href="/journals">What you have written so far</Nav.Link>
-                  </Nav>
-                </Navbar.Collapse>
-              </Navbar>
+             <Navigation/>
               <Container>
               <Row>
                 <Col>
@@ -102,4 +84,4 @@ const mapDispatchToProps=(dispatch)=>{
   }
 }
 
-export default connect(null, mapDispatchToProps)(Journalview)// null ist first param which is the state(mapstatetoProps)
+export default connect(null, mapDispatchToProps)(Createpage)// null ist first param which is the state(mapstatetoProps)

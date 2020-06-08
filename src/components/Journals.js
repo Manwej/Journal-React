@@ -1,10 +1,8 @@
 import React, { Component, Fragment } from 'react'
-import Navbar from 'react-bootstrap/Navbar';
-import Nav from 'react-bootstrap/Nav';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import Navigation from './Navigation'
 import Container from 'react-bootstrap/Container';
 import Card from 'react-bootstrap/Card';
 import {connect} from 'react-redux'
@@ -14,16 +12,7 @@ function Journals(props) {
    console.log(props)
         return (
            <Fragment>
-               <Navbar bg="light" expand="lg">
-                <Navbar.Brand href="#home">Your Journal</Navbar.Brand>
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                <Navbar.Collapse id="basic-navbar-nav">
-                  <Nav className="mr-auto">
-                    <Nav.Link href="/journal">Write new Page</Nav.Link>
-                    <Nav.Link href="/journals">What you have written so far</Nav.Link>
-                  </Nav>
-                </Navbar.Collapse>
-              </Navbar>
+               <Navigation/>
               <Container fluid>
               <h2>Your Journal</h2>
               <h3>Pages from Mai</h3>
