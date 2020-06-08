@@ -1,8 +1,8 @@
 import authReducer from './authReducer'
-import projectReducer from './projectReducer'
+import journalsReducer from './journalsReducer'
 import {combineReducers} from 'redux'
 const rootReducer =combineReducers({
         auth: authReducer,
-        project: projectReducer
+        journals: journalsReducer
     });
 export default rootReducer

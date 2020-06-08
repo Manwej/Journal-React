@@ -21,7 +21,7 @@ function App() {
         <Route exact path ='/journals'>
           <Journals/>
         </Route>
-        <Route exact path ='/journals/:id'>
+        <Route exact path ='/journal/:id'>
           <Journalsedit/>
         </Route>
         <Route exact path ='/login'>

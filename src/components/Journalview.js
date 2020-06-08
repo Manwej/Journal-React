@@ -1,4 +1,4 @@
-import React, { Component, Fragment, useState } from 'react'
+import React, { Component, Fragment, useState, useEffect } from 'react'
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import Row from 'react-bootstrap/Row';
@@ -7,7 +7,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import {connect} from 'react-redux'
-import {createProject} from '../store/actions/projectActions'
+import {fetchJournal} from '../store/actions/journalsActions'
 
 
 
@@ -22,8 +22,15 @@ function Journalview(props) {
    }
     const handleSubmit=(e)=>{
     e.preventDefault()
-    props.createProject(state)
+    props.fetchJournal()
     }
+    console.log("hellofrom journalviews")
+    console.log(props)
+
+    useEffect(() => {
+      console.log("hello")
+      props.fetchJournal()
+    }, [])
    
         return (
            <Fragment>
@@ -90,7 +97,8 @@ function Journalview(props) {
 }
 const mapDispatchToProps=(dispatch)=>{
   return{
-    createProject: (project)=>dispatch(createProject(project))
+    fetchJournal: ()=>dispatch(fetchJournal())
+    //fetchJournal: (project)=>dispatch(fetchJournal(project))
   }
 }
 

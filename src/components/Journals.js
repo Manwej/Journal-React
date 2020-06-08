@@ -102,7 +102,7 @@ function Journals(props) {
 }
 const mapStateToProps=(state)=>{
   return{
-    projects: state.project.projects
+    journals: state.journals.journals
   }
 }
 export default connect(mapStateToProps)(Journals)
