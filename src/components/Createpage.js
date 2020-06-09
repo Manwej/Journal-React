@@ -6,22 +6,42 @@ import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Navigation from './Navigation'
 import {connect} from 'react-redux'
-import {fetchJournal} from '../store/actions/journalsActions'
+import {fetchJournal, createJournal} from '../store/actions/journalsActions'
 
 function Createpage(props) {
-   const [state, setState] = useState("")
+   const [page, updatePage] = useState({
+     q1: "",
+     q2: "",
+     q3: "",
+     q4: "",
+     q5: "",
+     q6: ""
+   })
+
+  //  const [q1, setq1] = useState('')
+  //  const [q2, setq2] = useState('')
+  //  const [q3, setq3] = useState('')
+  //  const [q1, setq1] = useState('')
+  //  const [q1, setq1] = useState('')
+  //  const [q1, setq1] = useState('')
+
+
 
     const handleChange=(e)=>{
-      setState(e.target.value)
+      //setPage({[e.target.id]: e.target.value})
+      const {name, value} = e.target // same as const name = e.target.name same for value
+      updatePage({[name]: value})
    }
     const handleSubmit=(e)=>{
     e.preventDefault()
-    props.fetchJournal()
+    console.log(page)
+    props.createJournal(page)
+
     }
-    console.log(props)
-    useEffect(() => {
-      props.fetchJournal()
-    }, [])
+    //console.log(props)
+    // useEffect(() => {
+    //   props.fetchJournal()
+    // }, [])
    
         return (
            <Fragment>
@@ -29,11 +49,11 @@ function Createpage(props) {
               <Container>
               <Row>
                 <Col>
-                <Form>
+                <Form onSubmit ={handleSubmit}>
                   <h2> Write down your daily answers.</h2>
-                      <Form.Group controlId="question1">
+                      <Form.Group >
                         <Form.Label>How are you feeling today?</Form.Label>
-                        <Form.Control as="select" onChange={handleChange}>
+                        <Form.Control as="select" onChange={handleChange} id='question1' name='question1'>
                           <option>1-very good</option>
                           <option>2-good</option>
                           <option>3-average</option>
@@ -41,32 +61,27 @@ function Createpage(props) {
                           <option>5-bad</option>
                         </Form.Control>
                       </Form.Group>
-                      <Form.Group controlId="question2">
+                      <Form.Group>
                         <Form.Label>Why are you feeling like you do and could you change for better or worse?</Form.Label>
-                        <Form.Control type="text" placeholder="answer" />
+                          <Form.Control type="text" placeholder="answer" id='question2' name='question2' onChange={handleChange}/>
                       </Form.Group>
-                      <Form.Group controlId="question3">
-                      <Form.Label>What are you gratefull for today?</Form.Label>
-                    
-                        <Form.Control as="textarea" rows="3" placeholder="answer" onChange={handleChange}/>
+                      <Form.Group>
+                        <Form.Label>What are you gratefull for today?</Form.Label>
+                          <Form.Control as="textarea" rows="3" placeholder="answer" id='question3'  name='question3' onChange={handleChange}/>
                       </Form.Group>
-                      <Form.Group controlId="question4">
-                      <Form.Label>What is your daily affirmation?</Form.Label>
-                    
-                        <Form.Control as="textarea" rows="3" placeholder="answer"/>
+                      <Form.Group>
+                        <Form.Label>What is your daily affirmation?</Form.Label>
+                          <Form.Control as="textarea" rows="3" placeholder="answer" id='question4' name='question4' onChange={handleChange}/>
                       </Form.Group> 
-                      <Form.Group controlId="question5">
-                      <Form.Label>What could you have done better today?</Form.Label>
-        
-                        <Form.Control as="textarea" rows="3" placeholder="answer"/>
+                      <Form.Group>
+                        <Form.Label>What could you have done better today?</Form.Label>
+                          <Form.Control as="textarea" rows="3" placeholder="answer" id='question5'  name='question5' onChange={handleChange}/>
                       </Form.Group>
-                      <Form.Group controlId="question5">
+                      <Form.Group>
                       <Form.Label>What did you do today that gave you joy?</Form.Label>
-                    
-                        <Form.Control as="textarea" rows="3" placeholder="answer"/>
+                          <Form.Control as="textarea" rows="3" placeholder="answer" id='question6' name='question6' onChange={handleChange}/>
                       </Form.Group>
-                      
-                      <Button variant="primary" type="submit" onClick={handleSubmit}>
+                      <Button variant="primary" type="submit">
                         Submit
                       </Button>
                 </Form>
@@ -79,7 +94,8 @@ function Createpage(props) {
 }
 const mapDispatchToProps=(dispatch)=>{
   return{
-    fetchJournal: ()=>dispatch(fetchJournal())
+    createJournal: (project)=>dispatch(createJournal(project))
+   // fetchJournal: ()=>dispatch(fetchJournal())
     //fetchJournal: (project)=>dispatch(fetchJournal(project))
   }
 }

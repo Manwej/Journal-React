@@ -18,8 +18,13 @@ export const fetchJournal=()=>{
           });
       };
 }
-// export const createJournal=(project)=>{
-//     return (dispatch)=>{
-
-//     }
-// }
+export const createJournal=(project)=>{
+    return (dispatch)=>{
+        fetch("http://localhost:5000/journalpage", {
+            method: 'POST',
+        })
+          .then(resp => {
+           console.log(project)
+            return resp.json()})
+      }
+    }

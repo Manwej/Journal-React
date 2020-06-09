@@ -79,9 +79,8 @@ function Journals(props) {
                      <a href='/journals/123'>
                         <Button variant="primary">edit</Button>
                      </a>
-                      
                     </Card.Body>
-                  </Card>
+                </Card>
                 </Col>
               </Row>
               </Container>

@@ -10,7 +10,7 @@ export default function Album() {
           <Container maxWidth="sm">
             <div id="landing-header">
  		        <h1>Welcome to Your Journal!</h1>
-                <Link href='/journal'>
+                <Link href='/newpage'>
                 <Button variant="contained" color="primary">
                     View Your Journal
                 </Button>
