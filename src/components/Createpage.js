@@ -10,7 +10,6 @@ import {fetchJournal, createJournal} from '../store/actions/journalsActions'
 
 function Createpage(props) {
    const [page, updatePage] = useState(
-    //(state, newState) => ({ ...state, ...newState }),
     {
       question1: "",
       question2: "",
@@ -32,11 +31,6 @@ function Createpage(props) {
     props.createJournal(page)
 
     }
-    //console.log(props)
-    // useEffect(() => {
-    //   props.fetchJournal()
-    // }, [])
-   
         return (
            <Fragment>
              <Navigation/>
@@ -89,8 +83,6 @@ function Createpage(props) {
 const mapDispatchToProps=(dispatch)=>{
   return{
     createJournal: (project)=>dispatch(createJournal(project))
-   // fetchJournal: ()=>dispatch(fetchJournal())
-    //fetchJournal: (project)=>dispatch(fetchJournal(project))
   }
 }
 
