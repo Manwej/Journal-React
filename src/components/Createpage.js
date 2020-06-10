@@ -9,32 +9,26 @@ import {connect} from 'react-redux'
 import {fetchJournal, createJournal} from '../store/actions/journalsActions'
 
 function Createpage(props) {
-   const [page, updatePage] = useState({
-     q1: "",
-     q2: "",
-     q3: "",
-     q4: "",
-     q5: "",
-     q6: ""
-   })
-
-  //  const [q1, setq1] = useState('')
-  //  const [q2, setq2] = useState('')
-  //  const [q3, setq3] = useState('')
-  //  const [q1, setq1] = useState('')
-  //  const [q1, setq1] = useState('')
-  //  const [q1, setq1] = useState('')
-
-
+   const [page, updatePage] = useState(
+    //(state, newState) => ({ ...state, ...newState }),
+    {
+      question1: "",
+      question2: "",
+      question3: "",
+      question4: "",
+      question5: "",
+      question6: ""
+    }
+  );
 
     const handleChange=(e)=>{
-      //setPage({[e.target.id]: e.target.value})
       const {name, value} = e.target // same as const name = e.target.name same for value
-      updatePage({[name]: value})
+      updatePage({...page, [name]: value})
    }
     const handleSubmit=(e)=>{
     e.preventDefault()
     console.log(page)
+    console.log("hello from submit")
     props.createJournal(page)
 
     }
@@ -54,15 +48,15 @@ function Createpage(props) {
                       <Form.Group >
                         <Form.Label>How are you feeling today?</Form.Label>
                         <Form.Control as="select" onChange={handleChange} id='question1' name='question1'>
-                          <option>1-very good</option>
-                          <option>2-good</option>
-                          <option>3-average</option>
-                          <option>4-could be better</option>
-                          <option>5-bad</option>
+                          <option>very good</option>
+                          <option>good</option>
+                          <option>average</option>
+                          <option>could be better</option>
+                          <option>bad</option>
                         </Form.Control>
                       </Form.Group>
                       <Form.Group>
-                        <Form.Label>Why are you feeling like you do and could you change for better or worse?</Form.Label>
+                        <Form.Label>Why are you feeling like you do and could you change it for better or worse? Also, do you need to change it?</Form.Label>
                           <Form.Control type="text" placeholder="answer" id='question2' name='question2' onChange={handleChange}/>
                       </Form.Group>
                       <Form.Group>

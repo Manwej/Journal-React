@@ -11,9 +11,12 @@ const initState ={
             case "FETCH_JOURNAL_ERROR":
                     console.log("FETCH_JOURNAL_ERROR", action);
                     return { ...state, err: action.payload };
+            case "ADD_PAGE":
+                    return {...state, journals: action.payload}
             default:
                     return state;
         }
+
        
     }
     
