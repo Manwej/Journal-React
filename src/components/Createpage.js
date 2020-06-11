@@ -6,7 +6,7 @@ import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Navigation from './Navigation'
 import {connect} from 'react-redux'
-import {fetchJournal, createJournal} from '../store/actions/journalsActions'
+import {createJournal} from '../store/actions/journalsActions'
 
 function Createpage(props) {
    const [page, updatePage] = useState(

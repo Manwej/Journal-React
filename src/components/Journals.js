@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
@@ -6,10 +6,26 @@ import Navigation from './Navigation'
 import Container from 'react-bootstrap/Container';
 import Card from 'react-bootstrap/Card';
 import {connect} from 'react-redux'
+import {fetchJournal} from '../store/actions/journalsActions'
 
 
 function Journals(props) {
-   console.log(props)
+  const [page, setPage] = useState("")
+
+  const getDate=(str) =>{
+    var ops = {year: 'numeric'}; 
+    ops.month = ops.day = '2-digit'; 
+    return new Date(str).toLocaleDateString(0, ops);}
+
+    let date= new Date("2020-06-10T08:39:33.511Z")
+    console.log(date.getMonth()+1)
+   
+
+  useEffect(() => {
+    props.fetchJournal()
+  }, [page])
+  console.log(date)
+   console.log(props.journals)
         return (
            <Fragment>
                <Navigation/>
@@ -18,6 +34,10 @@ function Journals(props) {
               <h3>Pages from Mai</h3>
               <Row>
                 <Col>
+                {props.journals.map((el, index)=>{
+                  console.log(el.date)
+                  return <p key={index}> Hello {el.question1}</p>
+                })}
                 <Card style={{ width: '18rem' }}>
                     <Card.Body>
                       <Card.Title>Day 1</Card.Title>
@@ -93,4 +113,9 @@ const mapStateToProps=(state)=>{
     journals: state.journals.journals
   }
 }
-export default connect(mapStateToProps)(Journals)
+const mapDispatchToProps=dispatch=>{
+  return {
+    fetchJournal: ()=>dispatch(fetchJournal())
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Journals)
