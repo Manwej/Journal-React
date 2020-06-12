@@ -35,21 +35,5 @@ export const createJournal=(project)=>{
         //     }
         //   }
         });
-
-
-
-
-        // fetch("http://localhost:5000/journalpage", {
-        //     method: 'post',
-        //     body: JSON.stringify(project)
-        // })
-        //   .then(resp => {
-        //     console.log("hello from create")
-
-        //     return resp.json()
-        // }).then(json=>{
-        //     console.log("hello from create")
-        //     dispatch({type:"ADD_PAGE", payload:  json})
-        // })
       }
     }
