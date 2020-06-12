@@ -1,40 +1,91 @@
 import React, { Fragment, useEffect, useState } from 'react'
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Button from 'react-bootstrap/Button';
+
 import Navigation from './Navigation'
 import Container from 'react-bootstrap/Container';
-import Card from 'react-bootstrap/Card';
 import {connect} from 'react-redux'
 import {fetchJournal} from '../store/actions/journalsActions'
+import Page from './Page'
 
 
 function Journals(props) {
   const [page, setPage] = useState("")
+  const [date, setDate] = useState(true)
 
   const getDate=(str) =>{
     var ops = {year: 'numeric'}; 
     ops.month = ops.day = '2-digit'; 
     return new Date(str).toLocaleDateString(0, ops);}
-
-    let date= new Date("2020-06-10T08:39:33.511Z")
-    console.log(date.getMonth()+1)
-   
-
+ 
   useEffect(() => {
     props.fetchJournal()
   }, [page])
-  console.log(date)
-   console.log(props.journals)
+  const year = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"]
+  //let tog= props.journals[0]?props.journals[0]["date"]:false
+   //console.log(props.journals[0]?props.journals[0]["date"]:null)
         return (
            <Fragment>
                <Navigation/>
               <Container fluid>
-              <h2>Your Journal</h2>
-              <h3>Pages from Mai</h3>
-              <Row>
-                <Col>
-                {props.journals.map((el, index)=>{
+              
+                {year.map((el, index)=>{
+              
+                  return <Fragment key={index}>  
+                 
+                      <Row key={index}>   
+                        <Col md="auto">
+                        <h3 key={index}> Pages from {el}</h3>
+                        </Col>
+                      </Row>
+                      <Row>
+                      {props.journals.map((day, i)=>{
+                            let dt= new Date(day.date)
+                            let month= dt.getMonth()
+                            if (year[month]== el){
+                              return <Col md="3"> <Page props={day} month={el} key={i}/> </Col>
+                            }
+                          })
+                       }
+                      </Row>
+                        
+                        
+                      
+                        {/* {
+                          props.journals.map((day, i)=>{
+                            let dt= new Date(day.date)
+                            let month= dt.getMonth()
+                            if (year[month]== el){
+                            //  setDate(false)
+                              return <Page props={day} key={i}/>
+                            }
+                          })
+                        } */}
+                        {/* {date&& <div> No entries yet</div>} */}
+                   
+                    </Fragment>
+                })}
+                {/* {props.journals.map((el, index)=>{
+                  let dt= new Date(el.date)
+                  let month= dt.getMonth()
+                  switch(month){
+                    case 0:
+                      let monthName= "January"
+                      return 
+                        <Fragment>    
+                        <Row>   
+                          <h3> Pages from {monthName}</h3>
+                        </Row>
+                        </Fragment>
+                        
+                      
+
+                  }
+
+                  if(dt.getMonth()==5){
+                    console.log("hello Month 5")
+                  }
                   console.log(el.date)
                   return <p key={index}> Hello {el.question1}</p>
                 })}
@@ -48,61 +99,8 @@ function Journals(props) {
                       <Button variant="primary">edit</Button>
                     </Card.Body>
                   </Card>
-                </Col>
-                <Col>
-                <Card style={{ width: '18rem' }}>
-                    <Card.Body>
-                      <Card.Title>Day 2</Card.Title>
-                      <Card.Text>
-                        Some quick example text to build on the card title and make up the bulk of
-                        the card's content.
-                      </Card.Text>
-                      <Button variant="primary">edit</Button>
-                    </Card.Body>
-                  </Card>
-                </Col>
-              </Row>
-              <h3>Pages from June</h3>
-              <Row>
-                <Col>
-                <Card style={{ width: '18rem' }}>
-                    <Card.Body>
-                      <Card.Title>Day 1 June</Card.Title>
-                      <Card.Text>
-                        Some quick example text to build on the card title and make up the bulk of
-                        the card's content.
-                      </Card.Text>
-                      <Button variant="primary">edit</Button>
-                    </Card.Body>
-                  </Card>
-                </Col>
-                <Col>
-                <Card style={{ width: '18rem' }}>
-                    <Card.Body>
-                      <Card.Title>Day 2 June</Card.Title>
-                      <Card.Text>
-                        Some quick example text to build on the card title and make up the bulk of
-                        the card's content.
-                      </Card.Text>
-                      <Button variant="primary">edit</Button>
-                    </Card.Body>
-                  </Card>
-                </Col>
-                <Col>
-                <Card style={{ width: '18rem' }}>
-                    <Card.Body>
-                      <Card.Title>Day 3 June</Card.Title>
-                      <Card.Text>
-                        Some quick example text to build on the card title and make up the bulk of
-                        the card's content.
-                      </Card.Text>
-                     <a href='/journals/123'>
-                        <Button variant="primary">edit</Button>
-                     </a>
-                    </Card.Body>
-                </Card>
-                </Col>
-              </Row>
+               
+              </Row> */}
               </Container>
            </Fragment>
         )
