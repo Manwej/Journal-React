@@ -1,6 +1,7 @@
 import axios from 'axios'
+import jwt_decode from "jwt-decode";
 
-export const register = (newUser) => {
+export const registerUser = (newUser) => {
     return (dispatch) => {
       axios
         .post("http://localhost:5000/users/register", newUser)

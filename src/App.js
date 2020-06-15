@@ -5,7 +5,7 @@ import Journalsedit from './components/Journalsedit';
 
 import Landing from './components/Landing';
 import Journals from './components/Journals'
-import Register from './components/Register'
+import Register from './components/Register old'
 import Createpage from './components/Createpage';
 function App() {
   return(
