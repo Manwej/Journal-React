@@ -49,7 +49,7 @@ function Register(props) {
                           <Form.Control type="password" placeholder="******" id='password'  name='password' onChange={handleChange}/>
                       </Form.Group>
                       <Button variant="primary" type="submit">
-                        Submit
+                        SignUp
                       </Button>
                 </Form>
                 </Col>

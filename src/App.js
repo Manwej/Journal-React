@@ -5,9 +5,12 @@ import Journalsedit from './components/Journalsedit';
 
 import Landing from './components/Landing';
 import Journals from './components/Journals'
-import Register from './components/Register old'
+import Register from './components/Register'
 import Createpage from './components/Createpage';
-function App() {
+import {connect} from 'react-redux'
+
+function App(props) {
+  console.log(props + "hello from App")
   return(
     <Router>
       <Switch>
@@ -34,8 +37,15 @@ function App() {
     </Router>
   )
 }
+const mapStateToProps = (state) => {
+  console.log("state:", state);
 
-export default App;
+  return {
+    user: state.auth.user
+  };
+};
+
+export default connect(mapStateToProps)(App);
 
 
 {/* <Fragment>

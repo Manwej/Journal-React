@@ -13,10 +13,10 @@ function Journals(props) {
   const [page, setPage] = useState("")
   const [date, setDate] = useState(true)
 
-  const getDate=(str) =>{
-    var ops = {year: 'numeric'}; 
-    ops.month = ops.day = '2-digit'; 
-    return new Date(str).toLocaleDateString(0, ops);}
+  // const getDate=(str) =>{
+  //   var ops = {year: 'numeric'}; 
+  //   ops.month = ops.day = '2-digit'; 
+  //   return new Date(str).toLocaleDateString(0, ops);}
  
   useEffect(() => {
     props.fetchJournal()
@@ -66,41 +66,6 @@ function Journals(props) {
                    
                     </Fragment>
                 })}
-                {/* {props.journals.map((el, index)=>{
-                  let dt= new Date(el.date)
-                  let month= dt.getMonth()
-                  switch(month){
-                    case 0:
-                      let monthName= "January"
-                      return 
-                        <Fragment>    
-                        <Row>   
-                          <h3> Pages from {monthName}</h3>
-                        </Row>
-                        </Fragment>
-                        
-                      
-
-                  }
-
-                  if(dt.getMonth()==5){
-                    console.log("hello Month 5")
-                  }
-                  console.log(el.date)
-                  return <p key={index}> Hello {el.question1}</p>
-                })}
-                <Card style={{ width: '18rem' }}>
-                    <Card.Body>
-                      <Card.Title>Day 1</Card.Title>
-                      <Card.Text>
-                        Some quick example text to build on the card title and make up the bulk of
-                        the card's content.
-                      </Card.Text>
-                      <Button variant="primary">edit</Button>
-                    </Card.Body>
-                  </Card>
-               
-              </Row> */}
               </Container>
            </Fragment>
         )
