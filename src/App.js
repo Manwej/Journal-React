@@ -10,7 +10,7 @@ import Createpage from './components/Createpage';
 import {connect} from 'react-redux'
 
 function App(props) {
-  console.log(props)
+  console.log(props.user.isLogged)
   return(
     <Router>
       <Switch>
