@@ -1,8 +1,8 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Login from './components/Login';
-import Journalsedit from './components/Journalsedit';
 
+import Journalsedit from './components/Journalsedit';
+import Login from'./components/Login'
 import Landing from './components/Landing';
 import Journals from './components/Journals'
 import Register from './components/Register'
@@ -10,7 +10,7 @@ import Createpage from './components/Createpage';
 import {connect} from 'react-redux'
 
 function App(props) {
-  console.log(props + "hello from App")
+  console.log(props)
   return(
     <Router>
       <Switch>
@@ -41,7 +41,7 @@ const mapStateToProps = (state) => {
   console.log("state:", state);
 
   return {
-    user: state.auth.user
+    user: state.auth
   };
 };
 

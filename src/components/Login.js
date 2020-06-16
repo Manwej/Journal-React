@@ -8,14 +8,13 @@ import Navigation from './Navigation'
 import {connect} from 'react-redux'
 import {loginUser} from '../store/actions/authActions'
 
-function Register(props) {
+function Login(props) {
    const [user, updateUser] = useState(
     {
       email: "",
       password: ""
     }
   );
-
     const handleChange=(e)=>{
       const {name, value} = e.target // same as const name = e.target.name same for value
       updateUser({...user, [name]: value})
@@ -59,4 +58,4 @@ const mapDispatchToProps=(dispatch)=>{
   }
 }
 
-export default connect(null, mapDispatchToProps)(Register)// null ist first param which is the state(mapstatetoProps)
+export default connect(null, mapDispatchToProps)(Login)// null ist first param which is the state(mapstatetoProps)

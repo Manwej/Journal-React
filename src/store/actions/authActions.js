@@ -26,8 +26,8 @@ export const registerUser = (newUser) => {
         });
     };
   };
-  
   export const loginUser = (userData) => {
+      console.log("hello from logina ction")
     return (dispatch) => {
       axios
         .post("http://localhost:5000/users/login", userData)

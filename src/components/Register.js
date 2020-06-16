@@ -19,15 +19,19 @@ function Register(props) {
 
     const handleChange=(e)=>{
       const {name, value} = e.target // same as const name = e.target.name same for value
+
       updateUser({...user, [name]: value})
    }
     const handleSubmit=(e)=>{
     e.preventDefault()
     console.log(user)
-    console.log("hello from submit")
+    console.log(e.target)
     props.registerUser(user)
 
     }
+  
+
+    
         return (
            <Fragment>
              <Navigation/>
