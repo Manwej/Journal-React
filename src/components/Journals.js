@@ -17,7 +17,7 @@ function Journals(props) {
   //   ops.month = ops.day = '2-digit';
   //   return new Date(str).toLocaleDateString(0, ops);}
 
-  useEffect((props) => {
+  useEffect(() => {
     props.fetchJournal();
   }, []);
   const year = [

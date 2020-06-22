@@ -11,7 +11,6 @@ export const loadUser = () => (dispatch, getState) => {
       "Content-Type": "application/json",
     },
   };
-  console.log(token);
   // If token, add to headers
   if (token) {
     config.headers["x-auth-token"] = token;
@@ -19,7 +18,6 @@ export const loadUser = () => (dispatch, getState) => {
   axios
     .get("http://localhost:5000/users/user", config)
     .then((res) => {
-      console.log("hello from userload");
       dispatch({
         type: "USER_LOADED",
         payload: res.data,
@@ -38,7 +36,6 @@ export const registerUser = (newUser) => {
     axios
       .post("http://localhost:5000/users/register", newUser)
       .then((res) => {
-        console.log("response", res);
         if (res.status === 200) {
           dispatch({
             type: "SIGNUP_SUCCESS",
@@ -65,14 +62,13 @@ export const loginUser = (userData) => {
       .then((res) => {
         if (res.status === 200) {
           const token = res.data.token;
-          console.log(token);
           localStorage.setItem("token", res.data.token);
           const decoded = jwt_decode(token);
-          console.log(decoded);
           dispatch({
             type: "LOGIN_SUCCESS",
             payload: res.data,
             token: res.data.token,
+            decoded: decoded,
           });
         }
       })
@@ -86,12 +82,12 @@ export const loginUser = (userData) => {
   };
 };
 
-export const logOut = () => {
+export const logOut = (userData) => {
   return (dispatch) => {
-    axios.get("http://localhost:3000/");
+    axios.get("http://localhost:5000/users/logout", userData);
     localStorage.removeItem("token");
     // localStorage.clear();
-    dispatch({ type: "LOGOUT SUCCESS" });
+    dispatch({ type: "LOGOUT_SUCCESS" });
   };
 };
 

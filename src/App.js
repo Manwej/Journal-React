@@ -13,14 +13,12 @@ import Journals from "./components/Journals";
 import Register from "./components/Register";
 import Createpage from "./components/Createpage";
 import { loadUser } from "./store/actions/authActions";
-
 import { connect } from "react-redux";
 
 function App(props) {
   useEffect(() => {
     props.loadUser();
   }, []);
-  console.log(props.user.token);
   return (
     <Router>
       <Switch>
